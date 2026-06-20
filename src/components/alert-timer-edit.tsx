@@ -50,7 +50,6 @@ export function AlertTimer() {
 
     const timeStr = `${newTime.hour.padStart(2, "0")}:${newTime.minute.padStart(2, "0")}`
     const updated = [...schedules.map(s => s.time), timeStr]
-      .sort((a, b) => a.localeCompare(b))
 
     simpanJadwal(updated)
     setNewTime({ hour: "08", minute: "00" })
@@ -63,7 +62,6 @@ export function AlertTimer() {
     const timeStr = `${t.hour.padStart(2, "0")}:${t.minute.padStart(2, "0")}`
     const updated = schedules
       .map(s => s.id === id ? timeStr : s.time)
-      .sort((a, b) => a.localeCompare(b))
 
     simpanJadwal(updated)
   }
