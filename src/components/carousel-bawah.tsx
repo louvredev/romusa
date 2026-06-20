@@ -22,12 +22,17 @@ export function CarouselBawah() {
           loop: true,
         }}
         orientation="vertical"
-        className="w-full max-w-sm h-[380px]"
+        className="w-full max-w-sm h-[300px]"
       >
-        <CarouselContent className="-mt-1 h-[380px]">
+        <CarouselContent className="-mt-1 h-[300px]">
           {slides.map((slide) => (
-            <CarouselItem key={slide.id} className="pt-1 basis-full h-[380px]">
-              <div className="p-1 h-full">{slide.component}</div>
+            <CarouselItem
+              key={slide.id}
+              className="pt-1 basis-full h-[300px] overflow-hidden"
+            >
+              <div className="p-1 h-full overflow-hidden">
+                {slide.component}
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
