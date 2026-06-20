@@ -143,7 +143,7 @@ export function AlertTimer() {
       </CardHeader>
       <CardContent className="flex-1 min-h-0">
         {schedules.length > 0 ? (
-          <div className="flex flex-col gap-3 h-full overflow-y-auto">
+          <div className="flex flex-col gap-3 h-full overflow-y-auto overscroll-contain [touch-action:pan-y]">
             {schedules.map((schedule) => (
               <Dialog key={schedule.id}>
                 <DialogTrigger asChild>
