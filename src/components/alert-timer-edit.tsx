@@ -107,24 +107,30 @@ export function AlertTimer() {
                 <label className="text-sm font-medium">Waktu</label>
                 <div className="flex items-center justify-center gap-2">
                   <input
-                    type="number"
-                    min={0}
-                    max={23}
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    maxLength={2}
                     value={newTime.hour}
-                    onChange={(e) =>
-                      setNewTime({ ...newTime, hour: e.target.value.slice(0, 2) })
-                    }
+                    onFocus={(e) => e.target.select()}
+                    onChange={(e) => {
+                      const digits = e.target.value.replace(/\D/g, "").slice(0, 2)
+                      setNewTime({ ...newTime, hour: digits })
+                    }}
                     className="flex h-9 w-16 rounded-md border border-input bg-transparent px-3 py-1 text-sm text-center shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                   />
                   <span className="font-bold text-lg">:</span>
                   <input
-                    type="number"
-                    min={0}
-                    max={59}
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    maxLength={2}
                     value={newTime.minute}
-                    onChange={(e) =>
-                      setNewTime({ ...newTime, minute: e.target.value.slice(0, 2) })
-                    }
+                    onFocus={(e) => e.target.select()}
+                    onChange={(e) => {
+                      const digits = e.target.value.replace(/\D/g, "").slice(0, 2)
+                      setNewTime({ ...newTime, minute: digits })
+                    }}
                     className="flex h-9 w-16 rounded-md border border-input bg-transparent px-3 py-1 text-sm text-center shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                   />
                 </div>
@@ -159,36 +165,42 @@ export function AlertTimer() {
                       <label className="text-sm font-medium">Waktu</label>
                       <div className="flex items-center justify-center gap-2">
                         <input
-                          type="number"
-                          min={0}
-                          max={23}
+                          type="text"
+                          inputMode="numeric"
+                          pattern="[0-9]*"
+                          maxLength={2}
                           value={getEditTime(schedule).hour}
-                          onChange={(e) =>
+                          onFocus={(e) => e.target.select()}
+                          onChange={(e) => {
+                            const digits = e.target.value.replace(/\D/g, "").slice(0, 2)
                             setEditTimes({
                               ...editTimes,
                               [schedule.id]: {
                                 ...getEditTime(schedule),
-                                hour: e.target.value.slice(0, 2),
+                                hour: digits,
                               },
                             })
-                          }
+                          }}
                           className="flex h-9 w-16 rounded-md border border-input bg-transparent px-3 py-1 text-sm text-center shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                         />
                         <span className="font-bold text-lg">:</span>
                         <input
-                          type="number"
-                          min={0}
-                          max={59}
+                          type="text"
+                          inputMode="numeric"
+                          pattern="[0-9]*"
+                          maxLength={2}
                           value={getEditTime(schedule).minute}
-                          onChange={(e) =>
+                          onFocus={(e) => e.target.select()}
+                          onChange={(e) => {
+                            const digits = e.target.value.replace(/\D/g, "").slice(0, 2)
                             setEditTimes({
                               ...editTimes,
                               [schedule.id]: {
                                 ...getEditTime(schedule),
-                                minute: e.target.value.slice(0, 2),
+                                minute: digits,
                               },
                             })
-                          }
+                          }}
                           className="flex h-9 w-16 rounded-md border border-input bg-transparent px-3 py-1 text-sm text-center shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                         />
                       </div>
