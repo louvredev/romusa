@@ -77,7 +77,7 @@ export function AlertTimer() {
   }
 
   if (loading) return (
-    <Card className="mx-auto w-full max-w-sm h-[260px] flex flex-col pt-4">
+    <Card className="mx-auto w-full max-w-sm h-full flex flex-col pt-4">
       <CardHeader className="flex flex-row items-center justify-between pt-0 pb-2 space-y-0">
         <div className="w-8 h-8 shrink-0" />
         <CardTitle className="text-center m-0 leading-none">Jadwal Pakan</CardTitle>
@@ -90,7 +90,7 @@ export function AlertTimer() {
   )
 
   return (
-    <Card className="mx-auto w-full max-w-sm h-[260px] flex flex-col pt-4">
+    <Card className="mx-auto w-full max-w-sm h-full flex flex-col pt-4">
       <CardHeader className="flex flex-row items-center justify-between pt-0 pb-2 space-y-0">
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger asChild>
