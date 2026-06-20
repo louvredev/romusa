@@ -61,8 +61,6 @@ export function ChartSuhu() {
     dragStartX.current = null
   }
 
-  const isLatest = offset === 0
-
   if (loading) return (
     <Card className="mx-auto w-full max-w-sm">
       <CardHeader>
