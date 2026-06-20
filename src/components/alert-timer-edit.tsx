@@ -107,14 +107,14 @@ export function AlertTimer() {
             <div className="flex flex-col gap-4 py-2">
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-medium">Waktu</label>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center gap-2">
                   <input
                     type="number"
                     min={0}
                     max={23}
                     value={newTime.hour}
                     onChange={(e) =>
-                      setNewTime({ ...newTime, hour: e.target.value.padStart(2, "0") })
+                      setNewTime({ ...newTime, hour: e.target.value.slice(0, 2) })
                     }
                     className="flex h-9 w-16 rounded-md border border-input bg-transparent px-3 py-1 text-sm text-center shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                   />
@@ -125,7 +125,7 @@ export function AlertTimer() {
                     max={59}
                     value={newTime.minute}
                     onChange={(e) =>
-                      setNewTime({ ...newTime, minute: e.target.value.padStart(2, "0") })
+                      setNewTime({ ...newTime, minute: e.target.value.slice(0, 2) })
                     }
                     className="flex h-9 w-16 rounded-md border border-input bg-transparent px-3 py-1 text-sm text-center shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                   />
@@ -159,7 +159,7 @@ export function AlertTimer() {
                   <div className="flex flex-col gap-4 py-2">
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-medium">Waktu</label>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center justify-center gap-2">
                         <input
                           type="number"
                           min={0}
@@ -170,7 +170,7 @@ export function AlertTimer() {
                               ...editTimes,
                               [schedule.id]: {
                                 ...getEditTime(schedule),
-                                hour: e.target.value.padStart(2, "0"),
+                                hour: e.target.value.slice(0, 2),
                               },
                             })
                           }
@@ -187,7 +187,7 @@ export function AlertTimer() {
                               ...editTimes,
                               [schedule.id]: {
                                 ...getEditTime(schedule),
-                                minute: e.target.value.padStart(2, "0"),
+                                minute: e.target.value.slice(0, 2),
                               },
                             })
                           }
