@@ -28,7 +28,6 @@ const SLOTS_PER_PAGE = 4
 export function ChartSuhu() {
   const { data, loading } = useHistorySuhu()
   const [offset, setOffset] = useState(0)
-
   const dragStartX = useRef<number | null>(null)
   const dragStartOffset = useRef<number>(0)
 
@@ -61,24 +60,24 @@ export function ChartSuhu() {
     dragStartX.current = null
   }
 
-  if (loading) return (
-    <Card className="mx-auto w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Suhu</CardTitle>
-        <CardDescription>Memuat data...</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="h-[160px] bg-muted animate-pulse rounded" />
-      </CardContent>
-    </Card>
-  )
+  if (loading)
+    return (
+      <Card className="mx-auto w-full max-w-sm h-full">
+        <CardHeader>
+          <CardTitle>Suhu</CardTitle>
+          <CardDescription>Memuat data...</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[160px] bg-muted animate-pulse rounded" />
+        </CardContent>
+      </Card>
+    )
 
   return (
-    <Card className="mx-auto w-full max-w-sm overflow-hidden">
+    <Card className="mx-auto w-full max-w-sm h-full overflow-hidden flex flex-col">
       <CardHeader>
         <CardTitle className="text-center">Suhu</CardTitle>
       </CardHeader>
-
       <CardContent
         onMouseDown={(e) => onDragStart(e.clientX)}
         onMouseMove={(e) => e.buttons === 1 && onDragMove(e.clientX)}
@@ -87,15 +86,15 @@ export function ChartSuhu() {
         onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
         onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
         onTouchEnd={onDragEnd}
-        className="cursor-grab active:cursor-grabbing select-none"
+        className="cursor-grab active:cursor-grabbing select-none flex-1"
       >
-        <ChartContainer config={chartConfig}>
+        <ChartContainer config={chartConfig} className="h-full w-full">
           <LineChart
             accessibilityLayer
             data={visibleData}
             margin={{
               top: 4,
-              left: -20, 
+              left: -20,
               right: 20,
             }}
           >

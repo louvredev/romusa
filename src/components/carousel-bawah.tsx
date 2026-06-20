@@ -26,10 +26,8 @@ export function CarouselBawah() {
       >
         <CarouselContent className="-mt-1 h-[380px]">
           {slides.map((slide) => (
-            <CarouselItem key={slide.id} className="pt-1 basis-full">
-              <div className="p-1">
-                {slide.component}
-              </div>
+            <CarouselItem key={slide.id} className="pt-1 basis-full h-[380px]">
+              <div className="p-1 h-full">{slide.component}</div>
             </CarouselItem>
           ))}
         </CarouselContent>

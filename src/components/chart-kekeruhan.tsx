@@ -58,19 +58,20 @@ export function ChartKeruh() {
     dragStartX.current = null
   }
 
-  if (loading) return (
-    <Card className="mx-auto w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Kekeruhan</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="h-[160px] bg-muted animate-pulse rounded" />
-      </CardContent>
-    </Card>
-  )
+  if (loading)
+    return (
+      <Card className="mx-auto w-full max-w-sm h-full">
+        <CardHeader>
+          <CardTitle>Kekeruhan</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[160px] bg-muted animate-pulse rounded" />
+        </CardContent>
+      </Card>
+    )
 
   return (
-    <Card className="mx-auto w-full max-w-sm overflow-hidden">
+    <Card className="mx-auto w-full max-w-sm h-full overflow-hidden flex flex-col">
       <CardHeader>
         <CardTitle className="text-center">Kekeruhan</CardTitle>
       </CardHeader>
@@ -82,9 +83,9 @@ export function ChartKeruh() {
         onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
         onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
         onTouchEnd={onDragEnd}
-        className="cursor-grab active:cursor-grabbing select-none"
+        className="cursor-grab active:cursor-grabbing select-none flex-1"
       >
-        <ChartContainer config={chartConfig}>
+        <ChartContainer config={chartConfig} className="h-full w-full">
           <LineChart
             accessibilityLayer
             data={visibleData}
