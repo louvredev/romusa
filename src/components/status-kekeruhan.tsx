@@ -4,9 +4,8 @@ import { useTurbidity } from "@/hooks/useTurbidity"
 
 function getBadgeStatus(ntu: number) {
   if (ntu <= 25)   return { label: "Jernih" }
-  if (ntu <= 100)  return { label: "Baik",    className: "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300" }
-  if (ntu <= 500)  return { label: "Keruh",   variant: "destructive" as const }
-  return               { label: "Berbahaya", variant: "destructive" as const }
+  if (ntu <= 50)  return { label: "Baik",    className: "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300" }
+  return               { label: "Keruh", variant: "destructive" as const }
 }
 
 export function StatusKeruh() {

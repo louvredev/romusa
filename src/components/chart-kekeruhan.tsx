@@ -97,8 +97,8 @@ export function ChartKeruh() {
           >
             <CartesianGrid vertical={false} />
             <YAxis
-              domain={[0, 3000]}
-              ticks={[0, 500, 1000, 1500, 2000, 2500, 3000]}
+              domain={[0, 100]}
+              ticks={[0, 20, 40, 60, 80, 100]}
               axisLine={false}
               tickLine={false}
               tickMargin={8}
