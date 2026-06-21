@@ -1,12 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Toaster } from "@/components/ui/sonner"
 import { AuthProvider } from "@/contexts/AuthContext"
 import { ProtectedRoute } from "@/components/protected-route"
+import { BackgroundMusic } from "@/components/BackgroundMusic"
 import { AdminLogin } from "@/pages/AdminLogin"
 import { Dashboard } from "@/pages/Dashboard"
 
 export function App() {
   return (
     <AuthProvider>
+      <BackgroundMusic />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -21,6 +24,7 @@ export function App() {
           />
         </Routes>
       </BrowserRouter>
+      <Toaster position="top-left" />
     </AuthProvider>
   )
 }

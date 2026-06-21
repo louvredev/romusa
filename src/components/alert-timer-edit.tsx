@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react"
 import { Plus } from "lucide-react"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/dialog"
 import { useJadwal } from "@/hooks/useJadwal"
 import { useAuth } from "@/hooks/useAuth"
+import { playNotificationSound } from "@/lib/playNotificationSound"
 
 type Schedule = { id: number; time: string }
 
@@ -43,33 +45,54 @@ export function AlertTimer() {
     }
   }
 
-  const handleAddSchedule = () => {
+  const handleAddSchedule = async () => {
     if (!newTime.hour || !newTime.minute) return
 
     const timeStr = `${newTime.hour.padStart(2, "0")}:${newTime.minute.padStart(2, "0")}`
     const updated = [...schedules.map(s => s.time), timeStr]
 
-    simpanJadwal(updated)
-    setNewTime({ hour: "08", minute: "00" })
-    setIsAddDialogOpen(false)
+    try {
+      await simpanJadwal(updated)
+      playNotificationSound()
+      toast.success("Jadwal berhasil ditambahkan")
+      setNewTime({ hour: "08", minute: "00" })
+      setIsAddDialogOpen(false)
+    } catch (err) {
+      console.error(err)
+      toast.error("Gagal menambahkan jadwal")
+    }
   }
 
-  const handleSaveSchedule = (id: number) => {
+  const handleSaveSchedule = async (id: number) => {
     const t = editTimes[id]
     if (!t) return
     const timeStr = `${t.hour.padStart(2, "0")}:${t.minute.padStart(2, "0")}`
     const updated = schedules
       .map(s => s.id === id ? timeStr : s.time)
 
-    simpanJadwal(updated)
+    try {
+      await simpanJadwal(updated)
+      playNotificationSound()
+      toast.success("Jadwal berhasil diubah")
+    } catch (err) {
+      console.error(err)
+      toast.error("Gagal mengubah jadwal")
+    }
   }
 
-  const handleDeleteSchedule = (id: number) => {
+  const handleDeleteSchedule = async (id: number) => {
     const updated = schedules
       .filter(s => s.id !== id)
       .map(s => s.time)
 
-    simpanJadwal(updated)
+    try {
+      await simpanJadwal(updated)
+      playNotificationSound()
+      toast.success("Jadwal berhasil dihapus")
+    } catch (err) {
+      console.error(err)
+      toast.error("Gagal menghapus jadwal")
+    }
   }
 
   if (loading) return (
