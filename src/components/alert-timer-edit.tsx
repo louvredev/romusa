@@ -250,12 +250,15 @@ export function AlertTimer() {
                   </DialogContent>
                 </Dialog>
               ) : (
-                <div
+                <Button
                   key={schedule.id}
-                  className="w-full flex justify-center px-4 py-2 rounded-md border border-input"
+                  variant="outline"
+                  size="lg"
+                  className="w-full flex justify-center px-4 pointer-events-none"
+                  tabIndex={-1}
                 >
                   <span className="font-bold">{schedule.time}</span>
-                </div>
+                </Button>
               )
             )}
           </div>

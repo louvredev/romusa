@@ -7,7 +7,7 @@ export function BackgroundMusic() {
   useEffect(() => {
     const audio = new Audio("/sounds/boba-date-song.mp3")
     audio.loop = true
-    audio.volume = 0.8
+    audio.volume = 0.7
     audioRef.current = audio
 
     // Browser memblokir autoplay sebelum ada interaksi user.
